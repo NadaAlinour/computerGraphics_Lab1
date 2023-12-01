@@ -1,7 +1,10 @@
 #include <gl/freeglut.h>
 #include <stdio.h>
-#define FPS 10
+#include <math.h>
+#define PI 3.14159265358979323846;
+
 float move = 10.0;
+float spin = 0.0; // for car wheels
 int direction = 1;
 
 void keyboard2(unsigned char key, int x, int y) {
@@ -38,22 +41,52 @@ void carDisplay() {
 
 	glPushMatrix();
 	glTranslatef(move, 0, 0);
+	glTranslatef(1.0, 1.0, 0.0);
+	glRotatef(spin, 0, 0, 1.0);
+	glTranslatef(-1.0, -1.0, 0.0);
 
-	glBegin(GL_POLYGON);
-	glVertex2f(0.0, 0.0);
-	glVertex2f(2, 0.0);
-	glVertex2f(2, 2);
-	glVertex2f(0.0, 2);
+
+
+	// wheels
+	// need fixing but for now so i can see if they rotate or naur
+
+	glBegin(GL_LINE_LOOP);
+	glVertex2f(1.0, 1.0); // center of the circle
+
+	for (int i = 0; i < 20; i++) {
+		float angle = 3.14159265358979323846 * 2.0 * (float)i / (float)20;
+		float x = 1.0 + 1.0 * cos(angle);
+		float y = 1.0 + 1.0 * sin(angle);
+		glVertex2f(x, y);
+	}
+
 	glEnd();
+	glPopMatrix();
 
-	glBegin(GL_POLYGON);
-	glVertex2f(6.0, 0.0);
-	glVertex2f(6, 2.0);
-	glVertex2f(8, 2);
-	glVertex2f(8, 0);
+	glPushMatrix();
+	glTranslatef(move, 0, 0);
+	glTranslatef(7.0, 1.0, 0.0);
+	glRotatef(spin, 0, 0, 1.0);
+	glTranslatef(-7.0, -1.0, 0.0);
+
+
+	glBegin(GL_LINE_LOOP);
+	glVertex2f(7.0, 1.0); // center of the circle
+
+	for (int i = 0; i < 20; i++) {
+		float angle = 3.14159265358979323846 * 2.0 * (float)i / (float)20;
+		float x = 7.0 + 1.0 * cos(angle);
+		float y = 1.0 + 1.0 * sin(angle);
+		glVertex2f(x, y);
+	}
+
 	glEnd();
+	glPopMatrix();
 
-	glBegin(GL_POLYGON);
+
+	glPushMatrix();
+	glTranslatef(move, 0, 0);
+	glBegin(GL_LINE_LOOP);
 	glVertex2f(-1, 0.5);
 	glVertex2f(-1, 1.5);
 	glVertex2f(9, 1.5);
@@ -92,27 +125,38 @@ void carDisplay() {
 }
 
 void carUpdate() {
+
 	if (direction == 1) {
+		// translation
 		move -= 0.1 * direction;
+		// rotation for wheels
+		spin += 2 * direction;
+		if (spin > 360.0)
+			spin -= 360.0;
 		printf("FORWARD %f\n", move);
 		printf("what the fuck");
 	}
 
 	if (direction == -1) {
+		// translation
 		move -= 0.1 * direction;
+		// rotation for wheels
+		spin += 2 * direction;
+		if (spin > 360.0)
+			spin -= 360.0;
+
 		printf("BACKWARD %f\n", move);
 		printf("move backwards");
 	}
 		
+	// switch directions (forwards/backwards)
 
 	if (move <= -15.0 || move > 10.0) {
 		direction *= -1;
 	}
 
-
-
 	
-	
+
 	glutPostRedisplay();
 	glutTimerFunc(20, carUpdate, 0);
 	/*spin += 2.0;
