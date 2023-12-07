@@ -346,30 +346,7 @@ void keyboard1(unsigned char key, int x, int y) {
 		charCount++;
 		break;
 
-	case 'x': case 'X':
-		charArray[charCount].isLineStrip = 0;
-		charArray[charCount].coordinatesCount = 4;
-
-		charArray[charCount].coordinatesArray[0].x = -0.5;
-		charArray[charCount].coordinatesArray[0].y = 0.5;
-		charArray[charCount].coordinatesArray[1].x = 0.5;
-		charArray[charCount].coordinatesArray[1].y = -0.5;
-		charArray[charCount].coordinatesArray[2].x = -0.5;
-		charArray[charCount].coordinatesArray[2].y = -0.5;
-		charArray[charCount].coordinatesArray[3].x = 0.5;
-		charArray[charCount].coordinatesArray[3].y = 0.5;
-
-		if (charCount == 0) {
-			charArray[charCount].xPos = -14.0;
-			charArray[charCount].yPos = -14.0;
-		}
-		else {
-			charArray[charCount].xPos = 2.0 + charArray[charCount - 1].xPos;
-			charArray[charCount].yPos = -14.0;
-		}
-
-		charCount++;
-		break;
+	
 
 	case 'w': case 'W':
 		charArray[charCount].isLineStrip = 1;
@@ -385,6 +362,31 @@ void keyboard1(unsigned char key, int x, int y) {
 		charArray[charCount].coordinatesArray[3].y = -0.5;
 		charArray[charCount].coordinatesArray[4].x = 0.5;
 		charArray[charCount].coordinatesArray[4].y = 0.5;
+
+		if (charCount == 0) {
+			charArray[charCount].xPos = -14.0;
+			charArray[charCount].yPos = -14.0;
+		}
+		else {
+			charArray[charCount].xPos = 2.0 + charArray[charCount - 1].xPos;
+			charArray[charCount].yPos = -14.0;
+		}
+
+		charCount++;
+		break;
+
+	case 'x': case 'X':
+		charArray[charCount].isLineStrip = 0;
+		charArray[charCount].coordinatesCount = 4;
+
+		charArray[charCount].coordinatesArray[0].x = -0.5;
+		charArray[charCount].coordinatesArray[0].y = 0.5;
+		charArray[charCount].coordinatesArray[1].x = 0.5;
+		charArray[charCount].coordinatesArray[1].y = -0.5;
+		charArray[charCount].coordinatesArray[2].x = -0.5;
+		charArray[charCount].coordinatesArray[2].y = -0.5;
+		charArray[charCount].coordinatesArray[3].x = 0.5;
+		charArray[charCount].coordinatesArray[3].y = 0.5;
 
 		if (charCount == 0) {
 			charArray[charCount].xPos = -14.0;

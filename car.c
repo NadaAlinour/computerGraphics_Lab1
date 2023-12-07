@@ -19,17 +19,13 @@ void drawAxes() {
 	glBegin(GL_LINES);
 	glVertex2f(-15, 0);
 	glVertex2f(15, 0);
-	glVertex2f(0, -15);
-	glVertex2f(0, 15);
+	/*glVertex2f(0, -15);
+	glVertex2f(0, 15);*/
 	glEnd();
 }
 
-void displayCallback() {
-
-}
 
 void carDisplay() {
-	//glClear(GL_COLOR_BUFFER_BIT);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 	glColor3f(0.0f, 0.0f, 0.0f);
 
@@ -37,7 +33,6 @@ void carDisplay() {
 	drawAxes();
 	glPopMatrix();
 
-	//glRotatef(30, 0, 0, 1); // rotate around z-axis
 
 	glPushMatrix();
 	glTranslatef(move, 0, 0);
@@ -69,7 +64,6 @@ void carDisplay() {
 	glRotatef(spin, 0, 0, 1.0);
 	glTranslatef(-7.0, -1.0, 0.0);
 
-
 	glBegin(GL_LINE_LOOP);
 	glVertex2f(7.0, 1.0); // center of the circle
 
@@ -82,7 +76,6 @@ void carDisplay() {
 
 	glEnd();
 	glPopMatrix();
-
 
 	glPushMatrix();
 	glTranslatef(move, 0, 0);
@@ -109,8 +102,6 @@ void carDisplay() {
 	glVertex2f(5, 4);
 	glEnd();
 
-
-
 	glBegin(GL_LINE_LOOP);
 	glVertex2f(5.5, 4);
 	glVertex2f(5.5, 5.5);
@@ -130,11 +121,10 @@ void carUpdate() {
 		// translation
 		move -= 0.1 * direction;
 		// rotation for wheels
-		spin += 2 * direction;
+		spin += 4 * direction;
 		if (spin > 360.0)
 			spin -= 360.0;
 		printf("FORWARD %f\n", move);
-		printf("what the fuck");
 	}
 
 	if (direction == -1) {
@@ -146,7 +136,6 @@ void carUpdate() {
 			spin -= 360.0;
 
 		printf("BACKWARD %f\n", move);
-		printf("move backwards");
 	}
 		
 	// switch directions (forwards/backwards)
@@ -156,14 +145,9 @@ void carUpdate() {
 	}
 
 	
-
 	glutPostRedisplay();
 	glutTimerFunc(20, carUpdate, 0);
-	/*spin += 2.0;
-	if (spin > 360)
-		spin = spin - 360.0;
-	glutPostRedisplay();
-	glutTimerFunc(16, carUpdate, 0);*/
+
 }
 
 
