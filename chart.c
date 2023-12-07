@@ -52,7 +52,7 @@ void drawAxis() {
 }
 
 void drawDashes() {
-	int start = -10;
+	int start = -11;
 	int value = 1;
 	char scale[] = { '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'};
 
@@ -78,7 +78,7 @@ void drawDashes() {
 		}
 		
 
-		start += 2;
+		start += 1;
 	}
 }
 
@@ -96,10 +96,10 @@ void chartDisplay() {
 	for (int i = 0; i < sampleCount; i++) {
 		glColor3f(0.3922, 0.5843, 0.9294);
 		glBegin(GL_QUADS);
-		glVertex2f(xPos, -11.99);
-		glVertex2f(xPos + width, -11.99);
-		glVertex2f(xPos + width, dataArr[i].value - 1.5);
-		glVertex2f(xPos, dataArr[i].value - 1.5);
+		glVertex2f(xPos, -12);
+		glVertex2f(xPos + width, -12);
+		glVertex2f(xPos + width, dataArr[i].value - 12);
+		glVertex2f(xPos, dataArr[i].value - 12);
 		glEnd();
 
 		glColor3f(0.0f, 0.0f, 0.0f);
