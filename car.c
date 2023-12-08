@@ -48,8 +48,8 @@ void carDisplay() {
 	glBegin(GL_LINE_LOOP);
 	glVertex2f(1.0, 1.0); // center of the circle
 
-	for (int i = 0; i < 20; i++) {
-		float angle = 3.14159265358979323846 * 2.0 * (float)i / (float)20;
+	for (int i = 0; i < 1000; i++) {
+		float angle = 3.14159265358979323846 * 2.0 * (float)i / (float)1000;
 		float x = 1.0 + 1.0 * cos(angle);
 		float y = 1.0 + 1.0 * sin(angle);
 		glVertex2f(x, y);
@@ -67,8 +67,8 @@ void carDisplay() {
 	glBegin(GL_LINE_LOOP);
 	glVertex2f(7.0, 1.0); // center of the circle
 
-	for (int i = 0; i < 20; i++) {
-		float angle = 3.14159265358979323846 * 2.0 * (float)i / (float)20;
+	for (int i = 0; i < 1000; i++) {
+		float angle = 3.14159265358979323846 * 2.0 * (float)i / (float)1000;
 		float x = 7.0 + 1.0 * cos(angle);
 		float y = 1.0 + 1.0 * sin(angle);
 		glVertex2f(x, y);

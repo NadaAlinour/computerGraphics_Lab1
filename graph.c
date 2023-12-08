@@ -14,7 +14,7 @@ struct Vertices {
 };
 
 struct Vertices vertices[5];
-struct Edges edges[5]; // should be max 7 anyway
+struct Edges edges[7]; // should be max 7 anyway
 
 void setGraphInputs() {
 	// a b c d e
@@ -37,7 +37,7 @@ void setGraphInputs() {
 	}
 
 	printf("Please enter data for the graph edges\n");
-	for (int i = 0; i < 5; i++) {
+	for (int i = 0; i < 7; i++) {
 		printf("Edge %d:\n", i + 1);
 
 		printf("first vertex:\n");
@@ -51,7 +51,7 @@ void setGraphInputs() {
 
 	}
 
-	for (int i = 0; i < 5; i++) {
+	for (int i = 0; i < 7; i++) {
 		printf("Edge %d\n", i + 1);
 		printf("first vertex: %c   second vertex: %c\n", edges[i].a, edges[i].b);
 	}
