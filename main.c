@@ -18,6 +18,9 @@ void keyboard2(unsigned char key, int x, int y);
 void chartDisplay();
 void setInputs();
 
+// graph
+void graphDisplay();
+void setGraphInputs();
 
 
 
@@ -37,9 +40,9 @@ int main(int argc, char** argv) {
 
 		// loop not really working cuz program exits when openGL window is closed
 		printf("Enter a number to choose mode\n");
-		printf("1. Keyboard\n2. 3D charactesr\n3. Car\n4. Chart\n");
+		printf("1. Keyboard\n2. 3D charactesr\n3. Car\n4. Chart\n5. Graph\n");
 		scanf_s("%d", &mode);
-		printf("Selected mode: %d\n", mode);
+		//printf("Selected mode: %d\n", mode);
 
 		switch (mode) {
 		case 1:
@@ -79,6 +82,16 @@ int main(int argc, char** argv) {
 			glutInitWindowSize(600, 600); // has to be called before glutCreateWindow
 			glutCreateWindow("Bar Chart");
 			glutDisplayFunc(chartDisplay);
+			init();
+			glutMainLoop();
+			break;
+
+		case 5:
+			setGraphInputs();
+			glutInit(&argc, argv);
+			glutInitWindowSize(600, 600); // has to be called before glutCreateWindow
+			glutCreateWindow("Graph");
+			glutDisplayFunc(graphDisplay);
 			init();
 			glutMainLoop();
 			break;

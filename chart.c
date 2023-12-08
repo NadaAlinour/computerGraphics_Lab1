@@ -127,7 +127,6 @@ void chartDisplay() {
 	}
 
 
-
 	// ylabel position
 	glRasterPos2f(-13, 13);
 
