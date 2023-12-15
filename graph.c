@@ -64,7 +64,7 @@ void drawVertices() {
 	int xshift = 0;
 	int i = 0;
 	while (i < 2) {
-		// make circle later cuz
+		// make circle later
 		glBegin(GL_LINE_LOOP);
 		glVertex2f(-10 + xshift, -2);
 		glVertex2f(-8 + xshift, -2);
@@ -80,7 +80,7 @@ void drawVertices() {
 	xshift = 0;
 	i = 2;
 	while (i < 5) {
-		// make circle later cuz
+		// make circle later
 		glBegin(GL_LINE_LOOP);
 		glVertex2f(-10 + xshift, 7);
 		glVertex2f(-8 + xshift, 7);

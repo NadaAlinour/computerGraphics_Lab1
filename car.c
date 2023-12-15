@@ -43,7 +43,7 @@ void carDisplay() {
 
 
 	// wheels
-	// need fixing but for now so i can see if they rotate or naur
+	// need fixing but for now so i can see if they rotate or not
 
 	glBegin(GL_LINE_LOOP);
 	glVertex2f(1.0, 1.0); // center of the circle

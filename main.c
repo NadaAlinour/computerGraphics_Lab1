@@ -6,8 +6,7 @@
 void displayKeyboard();
 void keyboard1(unsigned char key, int x, int y);
 
-void display3DKeyboard();
-void keyboard3(unsigned char key, int x, int y);
+void display3D();
 
 // car
 void carDisplay();
@@ -22,12 +21,25 @@ void setInputs();
 void graphDisplay();
 void setGraphInputs();
 
+// question 3
+void thirdDisplay();
+void mouse(int button, int state, int x, int y);
+void thirdKeyboard(unsigned char key, int x, int y);
+
 
 
 
 void init() {
-	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);  // Set the background color to white
-	gluOrtho2D(-15.0, 15.0, -15.0, 15.0);       // Set the coordinate system
+	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);  // set the background color to white
+	gluOrtho2D(-15.0, 15.0, -15.0, 15.0);       // set the coordinate system
+}
+
+void init2() {
+	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);  // set the background color to white
+	glOrtho(-15.0, 15.0, -15.0, 15.0, 15.0, -15.0);
+	//gluOrtho2D(-15.0, 15.0, -15.0, 15.0);       // set the coordinate system
+
+
 }
 
 
@@ -40,7 +52,7 @@ int main(int argc, char** argv) {
 
 		// loop not really working cuz program exits when openGL window is closed
 		printf("Enter a number to choose mode\n");
-		printf("1. Keyboard\n2. 3D charactesr\n3. Car\n4. Chart\n5. Graph\n");
+		printf("1. Keyboard\n2. 3D characters\n3. Car\n4. Chart\n5. Graph\n6. Question 3\n");
 		scanf_s("%d", &mode);
 		//printf("Selected mode: %d\n", mode);
 
@@ -57,11 +69,11 @@ int main(int argc, char** argv) {
 
 		case 2:
 			glutInit(&argc, argv);
-			glutInitWindowSize(600, 600); // has to be called before glutCreateWindow
+			glutInitWindowSize(750, 600); // has to be called before glutCreateWindow
 			glutCreateWindow("3D Keyboard");
-			glutDisplayFunc(display3DKeyboard);
-			glutKeyboardFunc(keyboard3);
-			init();
+			glEnable(GL_DEPTH_TEST);
+			glutDisplayFunc(display3D);
+			init2();
 			glutMainLoop();
 			break;
 
@@ -92,6 +104,17 @@ int main(int argc, char** argv) {
 			glutInitWindowSize(600, 600); // has to be called before glutCreateWindow
 			glutCreateWindow("Graph");
 			glutDisplayFunc(graphDisplay);
+			init();
+			glutMainLoop();
+			break;
+
+		case 6:
+			glutInit(&argc, argv);
+			glutInitWindowSize(600, 600); // has to be called before glutCreateWindow
+			glutCreateWindow("Question 3");
+			glutDisplayFunc(thirdDisplay);
+			glutMouseFunc(mouse);
+			glutKeyboardFunc(thirdKeyboard);
 			init();
 			glutMainLoop();
 			break;
